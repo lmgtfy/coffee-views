@@ -3,7 +3,7 @@ ActiveSupport.on_load(:action_view) do
   if Object.const_defined?(:Slim)
 
     module CoffeeViews
-      class CoffeeViewEngine < Slim::Embedded::ERBEngine
+      class CoffeeViewEngine < Slim::Embedded::RubyEngine
         def on_slim_embedded(engine, body)
           erb = collect_text(body)
           source = CoffeeViews::Rails::TemplateHandler.compile_coffee(erb)
